@@ -2,6 +2,7 @@ import Role from "../models/Role.js";
 import User from "../models/User.js";
 import { ADMIN_EMAIL, ADMIN_USERNAME, ADMIN_PASSWORD } from "../config.js";
 
+//Seed some roles
 export const createRoles = async () => {
   try {
     // Count Documents
@@ -14,7 +15,7 @@ export const createRoles = async () => {
     const values = await Promise.all([
       new Role({ name: "USER" }).save(),
       new Role({ name: "MODERATOR" }).save(),
-      new Role({ name: "ROLE" }).save(),
+      new Role({ name: "ADMIN" }).save(),
     ]);
 
     console.log(values);
@@ -23,6 +24,7 @@ export const createRoles = async () => {
   }
 };
 
+//Seed admin default user
 export const createAdmin = async () => {
   // check for an existing admin user
   const userFound = await User.findOne({ email: ADMIN_EMAIL });
@@ -40,8 +42,8 @@ export const createAdmin = async () => {
     roles: roles.map((role) => role._id),
   });
 
-  console.log(`new user created: ${newUser.email}`);
+  console.log(`new user created: ${newUser}`);
 };
 
-createRoles();
-createAdmin();
+await createRoles();
+await createAdmin();

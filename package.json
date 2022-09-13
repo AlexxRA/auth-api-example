@@ -10,7 +10,7 @@
     "start": "node build/index.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Alejandro Rosales",
   "license": "ISC",
   "dependencies": {
     "bcryptjs": "^2.4.3",

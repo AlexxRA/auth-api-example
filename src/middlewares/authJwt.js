@@ -21,6 +21,7 @@ export const verifyToken = async (req, res, next) => {
   }
 };
 
+//:::::::::::::::::ROLES LOGIC:::::::::::::::::::::::::
 export const isModerator = async (req, res, next) => {
   try {
     const user = await User.findById(req.userId);
