@@ -19,3 +19,5 @@ Manages admin, moderator and user roles already set in the routes.
 - ADMIN_EMAIL
 - ADMIN_USERNAME
 - ADMIN_PASSWORD
+
+Thanks to @FaztWeb for the full tutorial example.
