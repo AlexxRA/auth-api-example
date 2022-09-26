@@ -55,4 +55,15 @@ export const isAdmin = async (req, res, next) => {
     console.log(error);
     return res.status(500).send({ message: error });
   }
+
+  export const verifyRoles = (...allowedRoles) => {
+    return (req, res, body) => {
+      if(!req?.roles) return res.sendStatus(401);
+      const rolesArray = [...allowedRoles];
+
+      const result = req.roles.map(role => rolesArray.includes(role)).find(v => v === true);
+      if (!result) return res.sendStatus(401);
+      next();
+    }
+  }
 };
